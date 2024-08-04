@@ -47,13 +47,15 @@ check_downloads() {
   return 0
 }
 
-# Prompt for input email file and output directory
+# Prompt for input email file and base output directory
 INPUT_EMAIL_FILE=$(prompt_input "Enter the path to the input email file" "input_access_mail.txt")
-OUTPUT_DIRECTORY=$(prompt_input "Enter the path to the output directory" "output")
+BASE_OUTPUT_DIRECTORY=$(prompt_input "Enter the name for the base output directory" "subdirectory")
+OUTPUT_DIRECTORY="output/${BASE_OUTPUT_DIRECTORY}"
 
 # Ensure the output directory exists
 mkdir -p "$OUTPUT_DIRECTORY"
 echo
+
 # Run the Go script to generate accessible URLs and access_mail
 print_message "$BLUE" "Running gclv4.go..."
 go run gcl.go -file "$INPUT_EMAIL_FILE" -au "${OUTPUT_DIRECTORY}/access_url.txt" -ae "${OUTPUT_DIRECTORY}/access_mail.txt" -no-color -threads 50
@@ -63,6 +65,7 @@ if [ $? -ne 0 ]; then
   exit 1
 fi
 echo
+
 # Extract and sort unique URLs
 print_message "$BLUE" "Processing URLs..."
 awk '/Accessible: /{print $2}' "${OUTPUT_DIRECTORY}/access_url.txt" | sort -u > "${OUTPUT_DIRECTORY}/finalaccessurl.txt"
@@ -72,6 +75,7 @@ if [ $? -ne 0 ]; then
   exit 1
 fi
 echo
+
 # Download the files
 print_message "$BLUE" "Downloading files..."
 bash "./download.sh" "${OUTPUT_DIRECTORY}/finalaccessurl.txt" "${OUTPUT_DIRECTORY}/download"
