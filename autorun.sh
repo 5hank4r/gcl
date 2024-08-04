@@ -56,7 +56,7 @@ mkdir -p "$OUTPUT_DIRECTORY"
 echo
 # Run the Go script to generate accessible URLs and access_mail
 print_message "$BLUE" "Running gclv4.go..."
-go run gclv4.go -file "$INPUT_EMAIL_FILE" -au "${OUTPUT_DIRECTORY}/access_url.txt" -ae "${OUTPUT_DIRECTORY}/access_mail.txt" -no-color -threads 50
+go run gcl.go -file "$INPUT_EMAIL_FILE" -au "${OUTPUT_DIRECTORY}/access_url.txt" -ae "${OUTPUT_DIRECTORY}/access_mail.txt" -no-color -threads 50
 
 if [ $? -ne 0 ]; then
   print_message "$RED" "Error: gclv4.go script failed."
@@ -93,8 +93,8 @@ fi
 echo
 
 # Run the Go analysis program
-print_message "$BLUE" "Running sev4..."
-./sev4 -dir "${OUTPUT_DIRECTORY}/download"
+print_message "$BLUE" "Running File Analyzer..."
+go run analyz.go -dir "${OUTPUT_DIRECTORY}/download"
 
 if [ $? -ne 0 ]; then
   print_message "$RED" "Error: Analysis with sev4 failed."
