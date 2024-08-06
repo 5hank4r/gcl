@@ -17,6 +17,3 @@ This repository contains a suite of tools for checking the accessibility of Goog
 - `wget` installed for downloading files
 
 This script checks the accessibility of Google Calendar URLs based on email addresses.
-
-```bash```
-
