@@ -11,16 +11,34 @@ RESET='\033[0m'
 OUTPUT_DIR="output"
 DOWNLOAD_DIR="download"
 
-# Check if the subdirectory and email file name are provided
-if [ -z "$1" ] || [ -z "$2" ]; then
-  echo -e "${RED}Error: Subdirectory or email file name not provided.${RESET}"
-  echo "Usage: $0 <subdirectory> <email_file>"
+# Function to display usage
+usage() {
+  echo -e "${RED}Usage: $0 -f <email_file> -o <subdirectory>${RESET}"
   exit 1
+}
+
+# Parse command-line options
+while getopts "f:o:" opt; do
+  case ${opt} in
+    f )
+      EMAIL_FILE=$OPTARG
+      ;;
+    o )
+      SUB_DIR=$OPTARG
+      ;;
+    \? )
+      usage
+      ;;
+  esac
+done
+shift $((OPTIND -1))
+
+# Check if the subdirectory and email file name are provided
+if [ -z "$SUB_DIR" ] || [ -z "$EMAIL_FILE" ]; then
+  usage
 fi
 
-# Set subdirectory, email file, and full paths
-SUB_DIR="$1"
-EMAIL_FILE="$2"
+# Set full paths
 FULL_DIR="$OUTPUT_DIR/$SUB_DIR"
 FULL_DOWNLOAD_DIR="$FULL_DIR/$DOWNLOAD_DIR"
 
