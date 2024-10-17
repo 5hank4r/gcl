@@ -14,9 +14,16 @@ Before using the tools, ensure you have the following installed:
 
 ## Features
 
-- **URL Checking:** `Validate the accessibility of URLs based on email addresses.`
-- **File Downloading:** `Download .ics files from accessible URLs.`
-- **Data Analysis:** `Run a Go script to analyze downloaded files.`
+- **URL Checking:**  
+  This feature allows users to validate the accessibility of Google Calendar URLs based on specific email addresses. By ensuring that the URLs are reachable, you can confirm whether a target's calendar is exposed, providing critical insight for potential vulnerabilities.
+
+- **File Downloading:**  
+  With this tool, you can seamlessly download `.ics` files from the URLs that have been deemed accessible. This functionality is vital for gathering calendar data, as `.ics` files contain event information that can be pivotal in understanding a target's schedule and potential weaknesses.
+
+- **Data Analysis:**  
+  After downloading the relevant files, our tool enables you to run a Go script that analyzes the content for sensitive information. This analysis can uncover private events, attendee lists, and other confidential details that may have been inadvertently shared, highlighting potential security risks.
+
+
 
 
 ## Usage
