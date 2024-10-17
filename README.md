@@ -1,6 +1,9 @@
 # GitHub Calendar Access Checker
 
-This repository provides tools to check the accessibility of Google Calendar URLs, download their content, and analyze them for sensitive information.
+In today’s digital landscape, it's easy for users to accidentally expose their Google Calendar to the public. This can lead to sensitive information, such as private meetings, event details, and attendee lists, being accessible to unauthorized individuals. 
+
+Our suite of tools is designed to help security professionals and bug bounty hunters identify these accidental exposures. By checking the accessibility of Google Calendar URLs associated with specific email addresses, our tools can reveal which calendars are publicly accessible. 
+
 
 ## Prerequisites
 
