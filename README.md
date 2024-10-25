@@ -1,4 +1,4 @@
-# GitHub Calendar Access Checker
+# Google Calendar Access Checker
 
 In today’s digital landscape, it's easy for users to accidentally expose their Google Calendar to the public. This can lead to sensitive information, such as private meetings, event details, and attendee lists, being accessible to unauthorized individuals. 
 
